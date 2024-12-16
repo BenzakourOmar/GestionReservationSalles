@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Sidebar from './components/Sidebar';
 import Header from './components/Header';
 import SalleActions from './components/Salle/SalleActions';
+import PromotionActions from './components/Promotion/PromotionActions';
 
 const App = () => {
     const [selectedMenu, setSelectedMenu] = useState('');
@@ -17,11 +18,11 @@ const App = () => {
         if (selectedMenu === 'salles') {
             return <SalleActions action={selectedAction} />;
         } else if (selectedMenu === 'matieres') {
-            return <div>Gestion des Matières</div>;
+            return <div>Gestion des Réservations</div>;
         } else if (selectedMenu === 'reservations') {
             return <div>Gestion des Réservations</div>;
         } else if (selectedMenu === 'promotions') {
-            return <div>Gestion des Promotions</div>;
+            return <PromotionActions action={selectedAction} />;
         }
         return <div>Bienvenue dans l'application de gestion des réservations.</div>;
     };
