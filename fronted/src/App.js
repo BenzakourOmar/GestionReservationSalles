@@ -3,6 +3,9 @@ import Sidebar from './components/Sidebar';
 import Header from './components/Header';
 import SalleActions from './components/Salle/SalleActions';
 import PromotionActions from './components/Promotion/PromotionActions';
+import MatiereActions from './components/Matiere/MatiereActions';
+import EnseignantActions from './components/Enseignant/EnseignantActions';
+
 
 const App = () => {
     const [selectedMenu, setSelectedMenu] = useState('');
@@ -18,12 +21,16 @@ const App = () => {
         if (selectedMenu === 'salles') {
             return <SalleActions action={selectedAction} />;
         } else if (selectedMenu === 'matieres') {
-            return <div>Gestion des Réservations</div>;
+            return <MatiereActions action={selectedAction} />;
         } else if (selectedMenu === 'reservations') {
             return <div>Gestion des Réservations</div>;
         } else if (selectedMenu === 'promotions') {
             return <PromotionActions action={selectedAction} />;
+        }else if (selectedMenu === 'enseignant') {
+            return <EnseignantActions action={selectedAction} />;
         }
+        
+
         return <div>Bienvenue dans l'application de gestion des réservations.</div>;
     };
 

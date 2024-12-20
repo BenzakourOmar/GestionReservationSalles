@@ -5,6 +5,7 @@ const Sidebar = ({ onMenuSelect }) => {
     const menuItems = [
         { label: 'Gestion des Salles', value: 'salles' },
         { label: 'Gestion des Matières', value: 'matieres' },
+        { label: 'Gestion des Enseignants', value: 'enseignant' },
         { label: 'Gestion des Promotions', value: 'promotions' },
         { label: 'Gestion des Créneaux', value: 'creneaux' },
         { label: 'Gestion des Réservations', value: 'reservations' },
