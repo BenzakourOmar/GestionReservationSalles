@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\ReservationRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ReservationRepository::class)]
@@ -10,85 +11,100 @@ class Reservation
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column]
+    #[ORM\Column(type: 'integer')]
     private ?int $id = null;
 
-    #[ORM\ManyToOne(inversedBy: 'reservations')]
-    private ?Creneau $Creneau = null;
+    #[ORM\ManyToOne(targetEntity: Promotion::class, inversedBy: 'reservations')]
+    private ?Promotion $promotion = null;
 
-    #[ORM\ManyToOne(inversedBy: 'reservations')]
-    private ?Enseignant $Enseignant = null;
+    #[ORM\ManyToOne(targetEntity: Matiere::class, inversedBy: 'reservations')]
+    private ?Matiere $matiere = null;
 
-    #[ORM\ManyToOne(inversedBy: 'reservations')]
-    private ?Matiere $Matiere = null;
+    #[ORM\ManyToOne(targetEntity: Enseignant::class, inversedBy: 'reservations')]
+    private ?Enseignant $enseignant = null;
 
-    #[ORM\ManyToOne(inversedBy: 'reservations')]
-    private ?Promotion $Promotion = null;
+    #[ORM\ManyToOne(targetEntity: Salle::class, inversedBy: 'reservations')]
+    private ?Salle $salle = null;
 
-    #[ORM\ManyToOne(inversedBy: 'reservations')]
-    private ?Salle $Salle = null;
+    #[ORM\ManyToOne(targetEntity: Creneau::class, inversedBy: 'reservations')]
+    private ?Creneau $creneau = null;
+
+    #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
+    private ?\DateTimeInterface $date = null;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getCreneau(): ?Creneau
+    public function getPromotion(): ?Promotion
     {
-        return $this->Creneau;
+        return $this->promotion;
     }
 
-    public function setCreneau(?Creneau $Creneau): static
+    public function setPromotion(?Promotion $promotion): self
     {
-        $this->Creneau = $Creneau;
-
-        return $this;
-    }
-
-    public function getEnseignant(): ?Enseignant
-    {
-        return $this->Enseignant;
-    }
-
-    public function setEnseignant(?Enseignant $Enseignant): static
-    {
-        $this->Enseignant = $Enseignant;
+        $this->promotion = $promotion;
 
         return $this;
     }
 
     public function getMatiere(): ?Matiere
     {
-        return $this->Matiere;
+        return $this->matiere;
     }
 
-    public function setMatiere(?Matiere $Matiere): static
+    public function setMatiere(?Matiere $matiere): self
     {
-        $this->Matiere = $Matiere;
+        $this->matiere = $matiere;
 
         return $this;
     }
 
-    public function getPromotion(): ?Promotion
+    public function getEnseignant(): ?Enseignant
     {
-        return $this->Promotion;
+        return $this->enseignant;
     }
 
-    public function setPromotion(?Promotion $Promotion): static
+    public function setEnseignant(?Enseignant $enseignant): self
     {
-        $this->Promotion = $Promotion;
+        $this->enseignant = $enseignant;
 
         return $this;
     }
 
     public function getSalle(): ?Salle
     {
-        return $this->Salle;
+        return $this->salle;
     }
 
-    public function setSalle(?Salle $Salle): static
+    public function setSalle(?Salle $salle): self
     {
-        $this->Salle = $Salle;
+        $this->salle = $salle;
+
+        return $this;
+    }
+
+    public function getCreneau(): ?Creneau
+    {
+        return $this->creneau;
+    }
+
+    public function setCreneau(?Creneau $creneau): self
+    {
+        $this->creneau = $creneau;
+
+        return $this;
+    }
+
+    public function getDate(): ?\DateTimeInterface
+    {
+        return $this->date;
+    }
+
+    public function setDate(?\DateTimeInterface $date): self
+    {
+        $this->date = $date;
 
         return $this;
     }
