@@ -5,6 +5,8 @@ import SalleActions from './components/Salle/SalleActions';
 import PromotionActions from './components/Promotion/PromotionActions';
 import MatiereActions from './components/Matiere/MatiereActions';
 import EnseignantActions from './components/Enseignant/EnseignantActions';
+import CreneauActions from './components/Creneaux/CreneauxActions';
+import ReservationsActions from './components/Reservations/ReservationsActions';
 
 
 const App = () => {
@@ -22,12 +24,14 @@ const App = () => {
             return <SalleActions action={selectedAction} />;
         } else if (selectedMenu === 'matieres') {
             return <MatiereActions action={selectedAction} />;
-        } else if (selectedMenu === 'reservations') {
-            return <div>Gestion des Réservations</div>;
+        } else if(selectedMenu === 'reservations'){
+            return <ReservationsActions action={selectedAction}/>;
         } else if (selectedMenu === 'promotions') {
             return <PromotionActions action={selectedAction} />;
         }else if (selectedMenu === 'enseignant') {
             return <EnseignantActions action={selectedAction} />;
+        }else if(selectedMenu === 'creneaux') {
+            return <CreneauActions action={selectedAction} />;
         }
         
 
