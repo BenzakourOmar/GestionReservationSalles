@@ -14,11 +14,6 @@ const App = () => {
     const [selectedMenu, setSelectedMenu] = useState('');
     const [selectedAction, setSelectedAction] = useState('');
 
-    const actions = [
-        { label: 'Ajouter', value: 'add' },
-        { label: 'Lister', value: 'list' },
-        { label: 'Supprimer', value: 'delete' },
-    ];
 
     const renderContent = () => {
         if (selectedMenu === 'salles') {
@@ -43,7 +38,25 @@ const App = () => {
     return (
         <div>
             <Sidebar onMenuSelect={setSelectedMenu} />
-            {selectedMenu && <Header actions={actions} onActionSelect={setSelectedAction} />}
+            {selectedMenu && selectedMenu !== 'calendrier' && (
+                <Header
+                    actions={[
+                        { label: 'Ajouter', value: 'add' },
+                        { label: 'Lister', value: 'list' },
+                        { label: 'Modifier', value: 'edit' },
+                    ]}
+                    onActionSelect={setSelectedAction}
+                />
+            )}
+            {selectedMenu === 'calendrier' && (
+                <Header
+                    actions={[
+                        { label: 'Pour une salle donnée', value: 'salle' },
+                        { label: 'Pour une promotion donnée', value: 'promotion' },
+                    ]}
+                    onActionSelect={setSelectedAction}
+                />
+            )}
             <div style={{ marginLeft: 240, marginTop: 64, padding: 20 }}>{renderContent()}</div>
         </div>
     );
