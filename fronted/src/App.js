@@ -7,6 +7,7 @@ import MatiereActions from './components/Matiere/MatiereActions';
 import EnseignantActions from './components/Enseignant/EnseignantActions';
 import CreneauActions from './components/Creneaux/CreneauxActions';
 import ReservationsActions from './components/Reservations/ReservationsActions';
+import CalendrierActions from './components/Calendrier/CalendrierActions';
 
 
 const App = () => {
@@ -32,8 +33,9 @@ const App = () => {
             return <EnseignantActions action={selectedAction} />;
         }else if(selectedMenu === 'creneaux') {
             return <CreneauActions action={selectedAction} />;
+        }else if (selectedMenu === 'calendrier') {
+            return <CalendrierActions subMenu={selectedAction} />;
         }
-        
 
         return <div>Bienvenue dans l'application de gestion des réservations.</div>;
     };
