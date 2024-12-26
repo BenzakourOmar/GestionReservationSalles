@@ -1,5 +1,5 @@
-CREATE DATABASE IF NOT EXISTS gestion_reservation;
-USE gestion_reservation;
+CREATE DATABASE IF NOT EXISTS gsreservationSalles;
+USE gsreservationSalles;
 
 -- Table creneau
 CREATE TABLE creneau (
